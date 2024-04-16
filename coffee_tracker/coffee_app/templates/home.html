@@ -1,0 +1,106 @@
+<!-- coffee_app/templates/coffee_app/home.html -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Tracker</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button-red {
+            background-color: #d12323; /* red */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coffee Tracker</h1>
+    <h2>All People and Their Coffee Counts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Coffees Received</th>
+                <th>Coffees Purchased</th>
+                <th>Coffees Owed</th>
+                <th>Get Coffee</th>
+                <th>Buy Coffee</th>
+                <th>Delete Person</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through all people in the database and display their details -->
+            {% for person in people %}
+            <tr>
+                <td>{{ person.name }}</td>
+                <td>{{ person.get_received }}</td>
+                <td>{{ person.get_purchased }}</td>
+                <td>{{ person.get_owed }}</td>
+                <td>
+                    <form action="{% url 'receive-coffee' person.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="button">Got</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{% url 'purchase-coffee' person.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="button">Bought</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{% url 'delete-person'  person.id %}" method="delete">
+                        {% csrf_token %}
+                        <button type="submit" class="button-red">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Add People</h3>
+    
+    <form action="{% url 'create-person' %}" method="post">
+        {% csrf_token %}
+        <label: for="name">Name:</label:>
+        <input type="text" id="name" name="name">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
