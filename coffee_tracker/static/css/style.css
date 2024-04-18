@@ -1,0 +1,61 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #dddddd;
+    background-color: rgb(180, 87, 0);
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: rgb(109, 58, 0);
+}
+
+#comrade-addition {
+    color: azure;
+    background-color: rgb(180, 87, 0);
+    border: 1px solid #dddddd;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button-red {
+    background-color: #d12323; /* red */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+body {
+    /* Set the background image */
+    background-image: url("../images/coffee_river_background.jpg");
+
+    /* Adjust the image size to cover the entire background */
+    background-size: cover;
+
+    /* Center the image */
+    background-position: center;
+
+    /* Optional: Add more styles to adjust background behavior */
+}

@@ -8,5 +8,4 @@ urlpatterns = [
     path('purchase/<int:person_id>/', views.purchase_coffee, name='purchase-coffee'),
     path('createperson/', views.create_person, name='create-person'),
     path('deleteperson/<int:person_id>/', views.delete_person, name='delete-person')
-    # Similar URL pattern for decrementing coffee count
-]
+] 
